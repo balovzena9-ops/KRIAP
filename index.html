@@ -10,11 +10,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Google Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Черный экран на всю площадь */
         body {
             background-color: #000000;
             color: #ffffff;
@@ -36,16 +35,16 @@
         header {
             display: flex;
             align-items: center;
-            padding: 20px;
+            padding: 20px 40px;
             background-color: #000;
-            gap: 15px;
+            gap: 20px;
             border-bottom: 1px solid #111;
+            z-index: 10;
         }
 
-        /* Белая круглая подложка для логотипа */
         .logo-circle {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: #ffffff;
             display: flex;
@@ -53,7 +52,7 @@
             align-items: center;
             overflow: hidden;
             flex-shrink: 0;
-            padding: 5px;
+            padding: 6px;
         }
 
         .company-logo {
@@ -67,163 +66,177 @@
             display: flex;
             align-items: center;
             border-bottom: 2px solid #ffffff;
-            padding-bottom: 5px;
-            max-width: 600px;
+            padding-bottom: 8px;
+            max-width: 800px;
         }
 
         .search-icon {
             color: white;
-            font-size: 18px;
-            margin-right: 10px;
+            font-size: 22px;
+            margin-right: 15px;
         }
 
         .search-input {
             background: transparent;
             border: none;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             width: 100%;
             outline: none;
             font-weight: 500;
         }
         
         .search-input::placeholder {
-            color: #ccc;
+            color: #888;
         }
 
-        /* Основной контент */
+        /* Основной контент (Огромные карточки) */
         main {
-            padding: 20px;
+            padding: 30px 40px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             overflow-y: auto;
-            gap: 20px;
+            gap: 40px;
+            align-items: center;
         }
 
-        /* Карточка фильма */
+        /* --- КРАСИВЫЙ СКРОЛЛБАР ДЛЯ ГЛАВНОГО ЭКРАНА --- */
+        main::-webkit-scrollbar {
+            width: 8px;
+        }
+        main::-webkit-scrollbar-track {
+            background: #000;
+        }
+        main::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        main::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Для Firefox */
+        main {
+            scrollbar-width: thin;
+            scrollbar-color: #333 #000;
+        }
+        /* ----------------------------------------------- */
+
         .movie-card {
-            border-radius: 12px;
+            border-radius: 16px;
             position: relative;
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 900px;
+            max-width: 1400px; /* Широкие карточки */
             transition: transform 0.2s;
-            /* overflow: hidden убран, чтобы всплывающее окно не обрезалось */
         }
 
-        /* Свечение */
         .glow-blue {
-            box-shadow: 0 0 30px rgba(0, 102, 255, 0.5), 0 0 15px rgba(0, 102, 255, 0.3);
-            border: 1px solid rgba(0, 102, 255, 0.2);
+            box-shadow: 0 0 40px rgba(0, 102, 255, 0.6), 0 0 20px rgba(0, 102, 255, 0.4);
+            border: 1px solid rgba(0, 102, 255, 0.3);
         }
 
         .glow-red {
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5), 0 0 15px rgba(255, 0, 0, 0.3);
-            border: 1px solid rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+            border: 1px solid rgba(255, 0, 0, 0.3);
         }
 
-        /* Фоны карточек (добавлено скругление, так как убрали overflow у родителя) */
         .movie-bg-blue {
             background: linear-gradient(90deg, #000a1a 0%, #0033aa 100%);
-            padding: 20px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
             position: relative;
-            min-height: 190px;
-            border-radius: 12px;
+            border-radius: 16px;
+            min-height: 300px;
         }
 
         .movie-bg-red {
             background: linear-gradient(90deg, #1a0000 0%, #8b0000 100%);
-            padding: 20px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
             position: relative;
-            min-height: 190px;
-            border-radius: 12px;
+            border-radius: 16px;
+            min-height: 300px;
         }
 
         .movie-info-row {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
+            gap: 30px;
             position: relative;
         }
 
-        /* Логотип чуть больше */
         .movie-logo {
-            width: 110px; 
-            height: 110px;
+            width: 160px; /* Увеличенный логотип */
+            height: 160px;
             object-fit: contain;
-            border-radius: 8px;
-            margin-top: 5px;
+            border-radius: 12px;
+            margin-top: 10px;
         }
 
         .movie-details {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
             flex-grow: 1;
-            padding-right: 160px; /* Место под картинку */
-            padding-top: 5px;
+            padding-right: 220px;
+            padding-top: 15px;
         }
 
         .movie-title {
             color: white;
-            font-size: 22px;
+            font-size: 38px; /* Крупный шрифт */
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
         }
 
         .movie-time {
             color: #e0e0e0;
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 500;
         }
 
-        /* Контейнер для картинки и кнопки */
         .movie-controls {
             position: absolute;
             top: 0px; 
-            right: 10px; /* Сдвинули от края к центру */
+            right: 0px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             z-index: 1;
         }
 
-        /* Квадратная картинка */
         .tag-img {
-            width: 170px; 
-            height: 170px;
+            width: 240px; /* Огромная картинка */
+            height: 240px;
             object-fit: contain;
             pointer-events: none; 
         }
 
-        /* Кнопка Инфо (i) */
         .info-btn {
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.5);
             border: 2px solid white;
             color: white;
-            width: 28px;
-            height: 28px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
-            font-family: serif;
             position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10; /* Подняли кнопку над картинкой */
+            top: 15px;
+            right: 15px;
+            z-index: 10;
         }
 
         .info-btn:hover {
@@ -231,27 +244,26 @@
             color: #000;
         }
 
-        /* Всплывающий текст информации */
         .info-popup {
             background: rgba(0, 0, 0, 0.95);
             color: white;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 14px;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 16px;
             position: absolute;
-            top: 45px; /* Появляется ровно под кнопкой */
-            right: 10px;
-            width: 250px;
-            z-index: 100; /* Самый высокий слой */
+            top: 60px;
+            right: 15px;
+            width: 300px;
+            z-index: 100;
             display: none;
-            border: 1px solid #fff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
-            line-height: 1.4;
+            border: 1px solid #444;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            line-height: 1.5;
         }
 
         .info-popup.active {
             display: block;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.2s ease;
         }
 
         @keyframes fadeIn {
@@ -259,43 +271,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Кнопка СМОТРЕТЬ */
         .watch-btn {
-            background: transparent;
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 15px 30px;
             color: white;
-            font-size: 18px;
-            font-weight: 800;
+            font-size: 20px;
+            font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             width: fit-content;
-            padding: 5px 0;
             transition: 0.2s;
             letter-spacing: 1px;
-            margin-top: auto; /* Прижимает кнопку к низу */
+            margin-top: auto;
         }
 
         .watch-btn:hover {
-            color: #66b3ff;
-            text-shadow: 0 0 15px rgba(102, 179, 255, 0.8);
+            background: white;
+            color: #000;
         }
 
-        .watch-btn-red:hover {
-            color: #ff6666;
-            text-shadow: 0 0 15px rgba(255, 102, 102, 0.8);
-        }
-
-        /* Информация о компании */
         .company-info {
             margin-top: auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             color: #888;
-            font-size: 14px;
+            font-size: 16px;
             background: #000;
+            width: 100%;
             border-top: 1px solid #1a1a1a;
         }
 
@@ -304,123 +311,219 @@
             font-weight: bold;
         }
 
-        /* Модальное окно с видео */
-        .video-modal {
+        /* =========================================
+           ПОЛНОЭКРАННЫЙ ВИДЕОПЛЕЕР (Pixel Style)
+           ========================================= */
+        .video-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .video-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background: #000;
+            z-index: 9999;
+            display: none; /* Скрыто по умолчанию */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .video-overlay.active {
+            display: flex;
         }
 
         video {
-            width: 90%;
-            max-height: 90vh;
-            max-width: 1200px;
-            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Сохраняет пропорции видео */
             outline: none;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
         }
 
-        .close-video {
+        /* Кастомные контролы */
+        .custom-controls {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: opacity 0.3s;
+            opacity: 1;
+        }
+
+        .custom-controls.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Инфо в верхнем левом углу */
+        .video-top-info {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: opacity 0.3s;
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .video-top-info.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .video-mini-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .video-mini-title {
+            font-size: 22px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Кнопка закрытия (Крестик) */
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             font-size: 24px;
             cursor: pointer;
-            transition: 0.2s;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1001;
+            transition: opacity 0.3s ease, background 0.2s, transform 0.2s;
+            z-index: 10;
+            backdrop-filter: blur(10px);
         }
 
-        .close-video:hover {
+        .close-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .close-btn:hover {
             background: rgba(255, 255, 255, 0.3);
-            color: #ff4444;
-            transform: rotate(90deg);
+            transform: scale(1.1);
         }
 
-        /* Адаптив под телефоны */
-        @media (max-width: 600px) {
-            header, main {
-                padding: 15px;
-            }
-            .movie-bg-blue, .movie-bg-red {
-                padding: 15px;
-                gap: 15px;
-                min-height: 170px;
-            }
-            .movie-title {
-                font-size: 16px;
-            }
-            .movie-time {
-                font-size: 13px;
-            }
-            .movie-logo {
-                width: 80px;
-                height: 80px;
-            }
-            .movie-details {
-                padding-right: 100px;
-            }
-            .tag-img {
-                width: 120px;
-                height: 120px;
-            }
-            .movie-controls {
-                top: 0px;
-                right: 5px;
-            }
-            .info-btn {
-                top: 5px;
-                right: 5px;
-                width: 24px;
-                height: 24px;
-                font-size: 14px;
-            }
-            .info-popup {
-                width: 200px;
-                font-size: 12px;
-                right: 5px;
-                top: 35px;
-            }
-            .watch-btn {
-                font-size: 16px;
-            }
-            video {
-                width: 100%;
-                border-radius: 0;
-            }
+        /* Нижняя панель управления */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .play-pause-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+        }
+
+        .time-display {
+            color: #ddd;
+            font-size: 15px;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+            min-width: 110px;
+        }
+
+        /* Стильная полоса перемотки (Google Pixel Style) */
+        .seek-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            height: 20px; /* Зона захвата */
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            outline: none;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.2); /* Задний фон полосы */
+            transition: height 0.1s;
+        }
+
+        input[type="range"]:hover {
+            height: 6px;
+        }
+
+        /* Ползунок (Кружок) */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+            transform: scale(0);
+            transition: transform 0.2s;
+        }
+
+        input[type="range"]:hover::-webkit-slider-thumb {
+            transform: scale(1);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            transform: scale(0);
+            transition: transform 0.2s;
+        }
+
+        input[type="range"]:hover::-moz-range-thumb {
+            transform: scale(1);
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            main { padding: 20px; gap: 20px; }
+            .movie-bg-blue, .movie-bg-red { padding: 25px; min-height: 250px; }
+            .movie-logo { width: 100px; height: 100px; }
+            .movie-title { font-size: 24px; }
+            .movie-details { padding-right: 100px; }
+            .tag-img { width: 140px; height: 140px; }
+            .info-btn { width: 28px; height: 28px; font-size: 16px; top: 10px; right: 10px; }
+            .info-popup { width: 220px; font-size: 14px; top: 45px; right: 10px; }
+            .watch-btn { font-size: 16px; padding: 12px 24px; }
+            
+            .custom-controls { padding: 20px; gap: 10px; }
+            .video-top-info { top: 20px; left: 20px; }
+            .video-mini-logo { width: 40px; height: 40px; }
+            .video-mini-title { font-size: 16px; }
+            .close-btn { top: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
+            .time-display { font-size: 13px; min-width: 90px; }
         }
     </style>
 </head>
@@ -448,7 +551,6 @@
                         <img src="https://github.com/balovzena9-ops/KRIAP/blob/main/IMG_20261106_155146.jpg?raw=true" alt="Баловск 91" class="movie-logo">
                         
                         <div class="movie-details">
-                            <!-- Убрано слово "Название" -->
                             <div class="movie-title">"БАЛОВСК 91"</div>
                             <div class="movie-time">время: 2:31</div>
                         </div>
@@ -462,8 +564,8 @@
                         </div>
                     </div>
 
-                    <button class="watch-btn" onclick="openVideo('https://github.com/balovzena9-ops/KRIAP/releases/download/KRIAP/VID_20261106_153509.mp4')">
-                        СМОТРЕТЬ <span style="font-size: 14px; margin-top: 2px;">▶</span>
+                    <button class="watch-btn" onclick="openVideo('https://github.com/balovzena9-ops/KRIAP/releases/download/KRIAP/VID_20261106_153509.mp4', 'https://github.com/balovzena9-ops/KRIAP/blob/main/IMG_20261106_155146.jpg?raw=true', 'БАЛОВСК 91')">
+                        СМОТРЕТЬ <span style="font-size: 16px; margin-top: 2px;">▶</span>
                     </button>
                 </div>
             </div>
@@ -488,8 +590,8 @@
                         </div>
                     </div>
 
-                    <button class="watch-btn watch-btn-red" onclick="openVideo('https://github.com/balovzena9-ops/KRIAP/releases/download/KRIAP/MayUmshka.mp4')">
-                        СМОТРЕТЬ ТИЗЕР <span style="font-size: 14px; margin-top: 2px;">▶</span>
+                    <button class="watch-btn" onclick="openVideo('https://github.com/balovzena9-ops/KRIAP/releases/download/KRIAP/MayUmshka.mp4', 'https://github.com/balovzena9-ops/KRIAP/blob/main/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F128_20261106164158.png?raw=true', 'MayUmshka')">
+                        СМОТРЕТЬ ТИЗЕР <span style="font-size: 16px; margin-top: 2px;">▶</span>
                     </button>
                 </div>
             </div>
@@ -501,14 +603,36 @@
         </main>
     </div>
 
-    <!-- Модальное окно для видео -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-container">
-            <button class="close-video" onclick="closeVideo()">✖</button>
-            <video id="videoPlayer" controls playsinline>
-                <source src="" type="video/mp4" id="videoSource">
-                Ваш браузер не поддерживает видео.
-            </video>
+    <!-- ПОЛНОЭКРАННЫЙ ПЛЕЕР -->
+    <div class="video-overlay" id="videoOverlay">
+        <!-- Инфо в углу (появляется при движении) -->
+        <div class="video-top-info" id="videoTopInfo">
+            <img src="" alt="Обложка" class="video-mini-logo" id="miniLogo">
+            <div class="video-mini-title" id="miniTitle"></div>
+        </div>
+
+        <button class="close-btn" id="closeBtn" onclick="closeVideo()">✖</button>
+        
+        <video id="mainVideo" playsinline></video>
+
+        <!-- Кастомные контролы -->
+        <div class="custom-controls" id="customControls">
+            <div class="controls-row">
+                <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlay()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" id="playIcon">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" id="pauseIcon" style="display: none;">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                </button>
+                
+                <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+                
+                <div class="seek-container" id="seekContainer">
+                    <input type="range" id="seekBar" min="0" max="100" value="0" step="0.1">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -531,7 +655,7 @@
             });
         });
 
-        // --- ЛОГИКА ИНФО (i) ---
+        // --- ЛОГИКА ИНФО ---
         function toggleInfo(event, popupId) {
             event.stopPropagation();
             const popup = document.getElementById(popupId);
@@ -554,29 +678,134 @@
             });
         });
 
-        // --- ЛОГИКА ВИДЕО ---
-        const modal = document.getElementById('videoModal');
-        const player = document.getElementById('videoPlayer');
+        // --- ЛОГИКА ВИДЕО (PIXEL STYLE) ---
+        const overlay = document.getElementById('videoOverlay');
+        const video = document.getElementById('mainVideo');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const seekBar = document.getElementById('seekBar');
+        const timeDisplay = document.getElementById('timeDisplay');
+        const customControls = document.getElementById('customControls');
+        const videoTopInfo = document.getElementById('videoTopInfo');
+        const closeBtn = document.getElementById('closeBtn'); // Наш крестик
+        const miniLogo = document.getElementById('miniLogo');
+        const miniTitle = document.getElementById('miniTitle');
 
-        function openVideo(videoUrl) {
-            player.src = videoUrl;
-            modal.classList.add('active');
+        let hideControlsTimeout;
+
+        // Открытие видео
+        function openVideo(url, posterUrl, title) {
+            video.src = url;
+            miniLogo.src = posterUrl;
+            miniTitle.textContent = title;
             
-            setTimeout(() => {
-                player.play();
-            }, 100);
+            overlay.classList.add('active');
+            
+            // Сброс времени и старт
+            video.currentTime = 0;
+            video.play();
+            updatePlayIcon();
+            
+            // Показываем контролы при старте
+            showControls();
+            
+            // Запускаем таймер скрытия
+            resetHideTimer();
         }
 
+        // Закрытие видео
         function closeVideo() {
-            modal.classList.remove('active');
-            player.pause();
-            player.src = "";
+            overlay.classList.remove('active');
+            video.pause();
+            video.src = "";
         }
 
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeVideo();
+        // Плей/Пауза
+        function togglePlay() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
             }
+            updatePlayIcon();
+            resetHideTimer();
+        }
+
+        function updatePlayIcon() {
+            if (video.paused) {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            } else {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }
+        }
+
+        // Обновление полосы и времени
+        video.addEventListener('timeupdate', () => {
+            if (!isNaN(video.duration)) {
+                const percent = (video.currentTime / video.duration) * 100;
+                seekBar.value = percent;
+                
+                // Красим ползунок
+                seekBar.style.background = `linear-gradient(to right, #fff ${percent}%, rgba(255,255,255,0.2) ${percent}%)`;
+                
+                // Обновление текста времени
+                timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+            }
+        });
+
+        // Перемотка
+        seekBar.addEventListener('input', () => {
+            const seekTime = (seekBar.value / 100) * video.duration;
+            video.currentTime = seekTime;
+            resetHideTimer();
+        });
+
+        // Форматирование времени (0:00)
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        // Показ/Скрытие элементов управления
+        function showControls() {
+            customControls.classList.remove('hidden');
+            videoTopInfo.classList.remove('hidden');
+            closeBtn.classList.remove('hidden'); // Показываем крестик
+        }
+
+        function hideControls() {
+            if (!video.paused) { // Скрываем только если видео играет
+                customControls.classList.add('hidden');
+                videoTopInfo.classList.add('hidden');
+                closeBtn.classList.add('hidden'); // Скрываем крестик
+            }
+        }
+
+        function resetHideTimer() {
+            showControls();
+            clearTimeout(hideControlsTimeout);
+            hideControlsTimeout = setTimeout(hideControls, 3000); // Скрыть через 3 сек
+        }
+
+        // Отслеживание движения мыши / касаний для показа контролов
+        overlay.addEventListener('mousemove', resetHideTimer);
+        overlay.addEventListener('touchstart', resetHideTimer);
+        overlay.addEventListener('click', (e) => {
+            // Если кликнули не по кнопкам, ставим на паузу или плей
+            if (e.target === video || e.target === overlay) {
+                togglePlay();
+            }
+        });
+
+        // Обработка окончания видео
+        video.addEventListener('ended', () => {
+            updatePlayIcon();
+            showControls();
         });
     </script>
 </body>
